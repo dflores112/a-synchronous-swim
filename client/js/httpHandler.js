@@ -1,10 +1,35 @@
-(function() {
+// const server = require('./mockServer');
+// const httpHandler = require('../js/httpHandler');
 
-  const serverUrl = 'http://127.0.0.1:3000';
+ (function() {
+
+  const serverUrl = 'http://127.0.0.1:3000/';
 
   //
   // TODO: build the swim command fetcher here
   //
+  var call = () => {$.get({
+    // type: 'GET',
+    // data: null,
+    url: serverUrl,
+    // cache: false,
+    // contentType: false,
+    // //processData: false,
+    success: (res) => {
+      // console.log(res)
+      SwimTeam.move(res);
+      // setTimeout()
+    },
+    complete: () => {
+      // setTimeout(call ,10000);
+    }
+  })};
+  call();
+
+
+  //make a variable to store ajax request
+  //reformat variable to for consumption by router
+
 
   /////////////////////////////////////////////////////////////////////
   // The ajax file uplaoder is provided for your convenience!
@@ -17,7 +42,7 @@
     $.ajax({
       type: 'POST',
       data: formData,
-      url: 'FILL_ME_IN',
+      url: serverUrl,
       cache: false,
       contentType: false,
       processData: false,
